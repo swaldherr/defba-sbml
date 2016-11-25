@@ -1,0 +1,47 @@
+model resalloc1
+
+// Example for defining deFBA models in SBML
+
+// extracellular metabolites
+N1 = 10
+N2 = 10
+
+// intracellular metabolites
+N = 0
+ATP = 0
+AA = 0
+
+// enzymes
+Etrans1 = 1e-5  
+Etrans2 = 1e-5  
+Emetab1 = 1e-5 
+Emetab2 = 1e-5 
+// ribosome
+R = 1e-6
+// structure
+S = 0.001
+
+// exchange reactions
+Trans1: N1 -> N; kcat1; // catalyzed by Etrans1
+Trans2: N2 -> N; kcat1;  // catalyzed by Etrans1 and Etrans2
+kcat1 = 1800;
+
+// metabolic reactions
+Metab1: N -> AA + ATP; kcat2; // catalyzed by Emetab1 or Emetab2
+Metab2: N2 -> AA + 2 ATP; kcat2; // catalyzed by Emetab1
+kcat2 = 2000;
+
+// biomass reactions, all catalyzed by R
+Biotrans1: 100 AA + 450 ATP -> Etrans1; 10;
+Biotrans2: 60 AA + 270 ATP -> Etrans2; 6;
+Metab1: 200 AA + 900 ATP -> Emetab1; 5;
+Metab2: 160 AA + 720 ATP -> Emetab2; 6.25;
+PR: 1000 AA + 45000 ATP -> R; 1;
+PS: 100 AA + 450 ATP -> S; 10;
+
+PR is "Ribosome expression"
+
+// biomass: B = 0.1 Etrans1 + 0.06 Etrans2 + 0.2 Emetab1 + 0.16 Emetab2 + 1 R + 0.1 S
+// structural constraint: S >= 0.5 B
+
+end;
