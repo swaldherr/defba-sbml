@@ -2,6 +2,9 @@ model resalloc1
 
 // Example for defining deFBA models in SBML
 
+// Antimony defines all reactions to be reversible, not sure how to change that.
+// Should be adjusted in the resulting SBML file else.
+
 // extracellular metabolites
 N1 = 10
 N2 = 10
@@ -22,24 +25,37 @@ R = 1e-6
 S = 0.001
 
 // exchange reactions
-Trans1: N1 -> N; kcat1; // catalyzed by Etrans1
-Trans2: N2 -> N; kcat1;  // catalyzed by Etrans1 and Etrans2
-kcat1 = 1800;
+Trans1: N1 -> N; kcatt; // catalyzed by Etrans1
+Trans2: N2 -> N; kcatt;  // catalyzed by Etrans12
+kcatt = 1800;
 
 // metabolic reactions
-Metab1: N -> AA + ATP; kcat2; // catalyzed by Emetab1 or Emetab2
-Metab2: N2 -> AA + 2 ATP; kcat2; // catalyzed by Emetab1
-kcat2 = 2000;
+Metab1: N -> AA + ATP; kcat1; // catalyzed by Emetab1 with kcat1 or by Emetab2 with kcat2!
+Metab2: N2 -> AA + 2 ATP; kcat1; // catalyzed by Emetab1
+// Emetab1 utilization is competitive here
+kcat1 = 2000;
+kcat2 = 2500;
 
-// biomass reactions, all catalyzed by R
+// biomass reactions, all catalyzed competitively by R
 Biotrans1: 100 AA + 450 ATP -> Etrans1; 10;
 Biotrans2: 60 AA + 270 ATP -> Etrans2; 6;
 Metab1: 200 AA + 900 ATP -> Emetab1; 5;
 Metab2: 160 AA + 720 ATP -> Emetab2; 6.25;
 PR: 1000 AA + 45000 ATP -> R; 1;
-PS: 100 AA + 450 ATP -> S; 10;
+PS: 100 AA + 250 ATP -> S; 10; // would be interesting to have this reversible to allow for storage effects
+
+// enzyme complex formation
+CF1: Etrans1 + Etrans2 -> Etrans12; // reversibility needs to be specified in SBML with the "reversible" attribute!
 
 PR is "Ribosome expression"
+PS is "Structural biomass production"
+Etrans1 is "Transporter enzyme"
+Etrans2 is "Cofactor of transporter enzyme"
+Etrans12 is "Transporter complex"
+Emetab1 is "Generic metabolic enzyme"
+Emetab2 is "Specialized metabolic enzyme"
+R is "Ribosome"
+S is "Structrual biomass component"
 
 // biomass: B = 0.1 Etrans1 + 0.06 Etrans2 + 0.2 Emetab1 + 0.16 Emetab2 + 1 R + 0.1 S
 // structural constraint: S >= 0.5 B
