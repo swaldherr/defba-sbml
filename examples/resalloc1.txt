@@ -37,10 +37,10 @@ kcat1 = 2000;
 kcat2 = 2500;
 
 // biomass reactions, all catalyzed competitively by R
-Biotrans1: 100 AA + 450 ATP -> Etrans1; 10;
-Biotrans2: 60 AA + 270 ATP -> Etrans2; 6;
-Metab1: 200 AA + 900 ATP -> Emetab1; 5;
-Metab2: 160 AA + 720 ATP -> Emetab2; 6.25;
+PBiotrans1: 100 AA + 450 ATP -> Etrans1; 10;
+PBiotrans2: 60 AA + 270 ATP -> Etrans2; 16.67;
+PMetab1: 200 AA + 900 ATP -> Emetab1; 5;
+PMetab2: 160 AA + 720 ATP -> Emetab2; 6.25;
 PR: 1000 AA + 45000 ATP -> R; 1;
 PS: 100 AA + 250 ATP -> S; 10; // would be interesting to have this reversible to allow for storage effects
 
