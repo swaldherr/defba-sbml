@@ -31,7 +31,7 @@ kcatt = 1800;
 
 // metabolic reactions
 Metab1: N -> AA + ATP; kcat1; // catalyzed by Emetab1 with kcat1 or by Emetab2 with kcat2!
-Metab2: N2 -> AA + 2 ATP; kcat1; // catalyzed by Emetab1
+Metab2: N -> AA + 2 ATP; kcat1; // catalyzed by Emetab1
 // Emetab1 utilization is competitive here
 kcat1 = 2000;
 kcat2 = 2500;
