@@ -5,7 +5,7 @@
       <compartment sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
       <compartment id="external"    	 />
       <compartment id="metabolites" 	 />
-      <compartment id="biomass_products" />
+      <compartment id="bio" />
     </listOfCompartments>
     <listOfSpecies>
       <species id="N1"  compartment="external" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
@@ -13,13 +13,69 @@
       <species id="N"   compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="ATP" compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="AA"  compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Etrans1" name="Transporter enzyme" compartment="biomass_products" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="biomass_products" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Emetab1" name="Generic metabolic enzyme" compartment="biomass_products" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="biomass_products" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="R" name="Ribosome" compartment="biomass_products" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="S" name="Structrual biomass component" compartment="biomass_products" initialConcentration="0.001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Complex_1" name="Transporter complex" compartment="biomass_products" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+          <note>
+              <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p>1*GTRANS1</p>
+                  <p>MOLECULAR WEIGHT: 0.1</p>
+                  <p>PERCENTAGE OF BIOMASS: 0</p>
+              </body>
+          </notes>
+      </species>
+      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+          <note>
+              <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p>1*GTRANS2</p>
+                  <p>MOLECULAR WEIGHT: 0.06</p>
+                  <p>PERCENTAGE OF BIOMASS: 0</p>
+              </body>
+          </notes>
+      </species>
+      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+          <note>
+              <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p>1*GMETAB1</p>
+                  <p>MOLECULAR WEIGHT: 0.2</p>
+                  <p>PERCENTAGE OF BIOMASS: 0</p>
+              </body>
+          </notes>
+      </species>
+      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+          <note>
+              <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p>1*GMETAB2</p>
+                  <p>MOLECULAR WEIGHT: 0.16</p>
+                  <p>PERCENTAGE OF BIOMASS: 0</p>
+              </body>
+          </notes>
+      </species>
+      <species id="R" name="Ribosome" compartment="bio" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <note>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+              <p>1*GRIBOS</p>
+              <p>MOLECULAR WEIGHT: 1</p>
+              <p>PERCENTAGE OF BIOMASS: 0</p>
+          </body>
+      </notes>
+      </species>
+      <species id="S" name="Structrual biomass component" compartment="bio" initialConcentration="0.001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+          <note>
+              <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p></p>
+                  <p>MOLECULAR WEIGHT: 0.1</p>
+                  <p>PERCENTAGE OF BIOMASS: 0.5</p>
+              </body>
+          </notes>
+      </species>
+      <species id="Complex_1" name="Transporter complex" compartment="bio" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+          <note>
+              <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p>1*GTRANS1 AND 1*GTRANS2</p>
+                  <p>MOLECULAR WEIGHT: 0.16</p>
+                  <p>PERCENTAGE OF BIOMASS: 0</p>
+              </body>
+          </notes>
+      </species>
     </listOfSpecies>
     <listOfParameters>
       <parameter constant="true" id="kcatt"  value="1800"  />
@@ -35,18 +91,18 @@
       <parameter constant="true" id="kcatC1" value="6.25"    />
     </listOfParameters>
     <fbc:listOfGeneProducts>
-      <fbc:geneProduct fbc:id="Etrans1"   label="g_Etrans1" />
-      <fbc:geneProduct fbc:id="Etrans2"   label="g_Etrans2" />
-      <fbc:geneProduct fbc:id="Complex_1" label="Etrans1 and Etrans2" />
-      <fbc:geneProduct fbc:id="Emetab1"   label="g_Emetab1" />
-      <fbc:geneProduct fbc:id="Emetab2"   label="g_Emetab2" />
-      <fbc:geneProduct fbc:id="R"	  label="g_R"       />
+      <fbc:geneProduct fbc:id="Etrans1"   label="1*GTRANS1" />
+      <fbc:geneProduct fbc:id="Etrans2"   label="1*GTRANS2" />
+      <fbc:geneProduct fbc:id="Complex_1" label="1*GTRANS1 AND 1*GTRANS2" />
+      <fbc:geneProduct fbc:id="Emetab1"   label="1*GMETAB1" />
+      <fbc:geneProduct fbc:id="Emetab2"   label="1*GMETAB2" />
+      <fbc:geneProduct fbc:id="R"         label="1*GRIBOS"  />
     </fbc:listOfGeneProducts>
     <listOfReactions>
       <reaction id="Trans1" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
-	<notes>
+        <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: Etrans1</p>
+            <p>GENE_ASSOCIATION: 1*GTRANS1</p>
           </body>
         </notes>
 	<fbc:geneProductAssociation fbc:id="Etrans1">
@@ -58,11 +114,6 @@
         <listOfProducts>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> kcatt </ci>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="Trans2" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
 	<notes>
@@ -83,11 +134,6 @@
         <listOfProducts>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> kcatt </ci>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="Metab1_1" reversible="false" fast="false" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
 	<notes>
@@ -105,14 +151,9 @@
           <speciesReference species="AA" stoichiometry="1" constant="true"/>
           <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> kcat1 </ci>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="Metab1_2" reversible="false" fast="false" fbc:lowerFluxBound="kcat2" fbc:upperFluxBound="zero">
-	<notes>
+        <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>GENE_ASSOCIATION: Emetab2</p>
           </body>
@@ -127,11 +168,6 @@
           <speciesReference species="AA" stoichiometry="1" constant="true"/>
           <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> kcat2 </ci>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="Metab2" reversible="false" fast="false" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
 	<notes>
@@ -149,11 +185,6 @@
           <speciesReference species="AA" stoichiometry="1" constant="true"/>
           <speciesReference species="ATP" stoichiometry="2" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> kcat1 </ci>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="Biotrans1" reversible="false" fast="false" fbc:lowerFluxBound="kcatR1" fbc:upperFluxBound="zero">
 	<notes>
@@ -171,11 +202,6 @@
         <listOfProducts>
           <speciesReference species="Etrans1" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <cn type="integer"> 10 </cn>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="Biotrans2" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR2" fbc:upperFluxBound="zero">
 	<notes>
@@ -193,11 +219,6 @@
         <listOfProducts>
           <speciesReference species="Etrans2" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <cn type="integer"> 16.67 </cn>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="Biotrans1_AND_Biotrans2" reversible="false" fast="false" fbc:lowerFluxBound="kcatC1" fbc:upperFluxBound="zero">
 	<notes>
@@ -215,11 +236,6 @@
         <listOfProducts>
           <speciesReference species="Complex_1" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <cn type="integer"> 6.25 </cn>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="PMetab1" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR3" fbc:upperFluxBound="zero">
 	<notes>
@@ -237,11 +253,6 @@
         <listOfProducts>
           <speciesReference species="Emetab1" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <cn type="integer"> 5 </cn>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="PMetab2" reversible="false" fast="false" fbc:lowerFluxBound="kcatR4" fbc:upperFluxBound="zero">
 	<notes>
@@ -259,11 +270,6 @@
         <listOfProducts>
           <speciesReference species="Emetab2" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <cn> 6.25 </cn>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="PR" name="Ribosome expression" reversible="false" fast="false" fbc:lowerFluxBound="kcatR5" fbc:upperFluxBound="zero">
 	<notes>
@@ -281,11 +287,6 @@
         <listOfProducts>
           <speciesReference species="R" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <cn type="integer"> 1 </cn>
-          </math>
-        </kineticLaw>
       </reaction>
       <reaction id="PS" name="Structural biomass production" reversible="false" fast="false" fbc:lowerFluxBound="kcatR6" fbc:upperFluxBound="zero">
 	<notes>
@@ -303,11 +304,6 @@
         <listOfProducts>
           <speciesReference species="S" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <cn type="integer"> 10 </cn>
-          </math>
-        </kineticLaw>
       </reaction>
 <!--       <reaction id="CF1" reversible="true" fast="false"> -->
 <!--         <listOfReactants> -->
