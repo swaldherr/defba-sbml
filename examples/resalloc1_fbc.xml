@@ -93,12 +93,12 @@
       <parameter constant="true" id="kcatC1" value="6.25"    />
     </listOfParameters>
     <fbc:listOfGeneProducts>
-      <fbc:geneProduct fbc:id="Etrans1"   label="1*GTRANS1" />
-      <fbc:geneProduct fbc:id="Etrans2"   label="1*GTRANS2" />
-      <fbc:geneProduct fbc:id="Complex_1" label="1*GTRANS1 AND 1*GTRANS2" />
-      <fbc:geneProduct fbc:id="Emetab1"   label="1*GMETAB1" />
-      <fbc:geneProduct fbc:id="Emetab2"   label="1*GMETAB2" />
-      <fbc:geneProduct fbc:id="R"         label="1*GRIBOS"  />
+      <fbc:geneProduct fbc:id="Etrans1"   label="1*GTRANS1"     associatedSpecies="Etrans1"/>
+      <fbc:geneProduct fbc:id="Etrans2"   label="1*GTRANS2"     associatedSpecies="Etrans2"/>
+      <fbc:geneProduct fbc:id="Complex_1" label="1*GTRANS1 AND 1*GTRANS2"   associatedSpecies="Complex_1" />
+      <fbc:geneProduct fbc:id="Emetab1"   label="1*GMETAB1"     associatedSpecies="Emetab1"/>
+      <fbc:geneProduct fbc:id="Emetab2"   label="1*GMETAB2"     associatedSpecies="Emetab2"/>
+      <fbc:geneProduct fbc:id="R"         label="1*GRIBOS"      associatedSpecies="R"/>
     </fbc:listOfGeneProducts>
     <listOfReactions>
       <reaction id="Trans1" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
@@ -118,18 +118,9 @@
         </listOfProducts>
       </reaction>
       <reaction id="Trans2" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: (Etrans1 AND Etrans2)</p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Complex_1">
-	  <fbc:geneProductRef fbc:geneProduct="Complex_1"/>
-	  <!--<fbc:and>
-	    <fbc:geneProductRef fbc:geneProduct="Etrans1" />
-	    <fbc:geneProductRef fbc:geneProduct="Etrans2" />
-	  </fbc:and>-->
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Complex_1">
+          <fbc:geneProductRef fbc:geneProduct="Complex_1"/>
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="N2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -137,15 +128,10 @@
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction id="Metab1_1" reversible="false" fast="false" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: Emetab1</p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Emetab1">
-	  <fbc:geneProductRef fbc:geneProduct="Emetab1" />
-	</fbc:geneProductAssociation>
+      <reaction id="Metab1_1" reversible="false" fast="true" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
+        <fbc:geneProductAssociation fbc:id="Emetab1">
+            <fbc:geneProductRef fbc:geneProduct="Emetab1" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -154,15 +140,10 @@
           <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction id="Metab1_2" reversible="false" fast="false" fbc:lowerFluxBound="kcat2" fbc:upperFluxBound="zero">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: Emetab2</p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Emetab2">
-	  <fbc:geneProductRef fbc:geneProduct="Emetab2" />
-	</fbc:geneProductAssociation>
+      <reaction id="Metab1_2" reversible="false" fast="true" fbc:lowerFluxBound="kcat2" fbc:upperFluxBound="zero">
+        <fbc:geneProductAssociation fbc:id="Emetab2">
+            <fbc:geneProductRef fbc:geneProduct="Emetab2" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -171,15 +152,10 @@
           <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction id="Metab2" reversible="false" fast="false" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: Emetab1</p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Emetab1">
-	  <fbc:geneProductRef fbc:geneProduct="Emetab1" />
-	</fbc:geneProductAssociation>
+      <reaction id="Metab2" reversible="false" fast="true" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
+        <fbc:geneProductAssociation fbc:id="Emetab1">
+            <fbc:geneProductRef fbc:geneProduct="Emetab1" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -189,14 +165,9 @@
         </listOfProducts>
       </reaction>
       <reaction id="Biotrans1" reversible="false" fast="false" fbc:lowerFluxBound="kcatR1" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: R </p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Ribosome">
-	  <fbc:geneProductRef fbc:geneProduct="R" />
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="AA" stoichiometry="100" constant="true"/>
           <speciesReference species="ATP" stoichiometry="450" constant="true"/>
@@ -206,14 +177,9 @@
         </listOfProducts>
       </reaction>
       <reaction id="Biotrans2" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR2" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: R </p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Ribosome">
-	  <fbc:geneProductRef fbc:geneProduct="R" />
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="AA" stoichiometry="60" constant="true"/>
           <speciesReference species="ATP" stoichiometry="270" constant="true"/>
@@ -223,16 +189,11 @@
         </listOfProducts>
       </reaction>
       <reaction id="Biotrans1_AND_Biotrans2" reversible="false" fast="false" fbc:lowerFluxBound="kcatC1" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: R </p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Ribosome">
-	  <fbc:geneProductRef fbc:geneProduct="R" />
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
-	  <speciesReference species="AA" stoichiometry="160" constant="true"/>
+          <speciesReference species="AA" stoichiometry="160" constant="true"/>
           <speciesReference species="ATP" stoichiometry="720" constant="true"/>
         </listOfReactants>
         <listOfProducts>
@@ -240,14 +201,9 @@
         </listOfProducts>
       </reaction>
       <reaction id="PMetab1" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR3" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: R </p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Ribosome">
-	  <fbc:geneProductRef fbc:geneProduct="R" />
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="AA" stoichiometry="200" constant="true"/>
           <speciesReference species="ATP" stoichiometry="900" constant="true"/>
@@ -257,14 +213,9 @@
         </listOfProducts>
       </reaction>
       <reaction id="PMetab2" reversible="false" fast="false" fbc:lowerFluxBound="kcatR4" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: R </p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Ribosome">
-	  <fbc:geneProductRef fbc:geneProduct="R" />
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="AA" stoichiometry="160" constant="true"/>
           <speciesReference species="ATP" stoichiometry="720" constant="true"/>
@@ -274,14 +225,9 @@
         </listOfProducts>
       </reaction>
       <reaction id="PR" name="Ribosome expression" reversible="false" fast="false" fbc:lowerFluxBound="kcatR5" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: R </p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Ribosome">
-	  <fbc:geneProductRef fbc:geneProduct="R" />
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="AA" stoichiometry="1000" constant="true"/>
           <speciesReference species="ATP" stoichiometry="45000" constant="true"/>
@@ -291,14 +237,9 @@
         </listOfProducts>
       </reaction>
       <reaction id="PS" name="Structural biomass production" reversible="false" fast="false" fbc:lowerFluxBound="kcatR6" fbc:upperFluxBound="zero">
-	<notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: R </p>
-          </body>
-        </notes>
-	<fbc:geneProductAssociation fbc:id="Ribosome">
-	  <fbc:geneProductRef fbc:geneProduct="R" />
-	</fbc:geneProductAssociation>
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="AA" stoichiometry="100" constant="true"/>
           <speciesReference species="ATP" stoichiometry="250" constant="true"/>
@@ -307,15 +248,6 @@
           <speciesReference species="S" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-<!--       <reaction id="CF1" reversible="true" fast="false"> -->
-<!--         <listOfReactants> -->
-<!--           <speciesReference species="Etrans1" stoichiometry="1" constant="true"/> -->
-<!--           <speciesReference species="Etrans2" stoichiometry="1" constant="true"/> -->
-<!--         </listOfReactants> -->
-<!--         <listOfProducts> -->
-<!--           <speciesReference species="Etrans12" stoichiometry="1" constant="true"/> -->
-<!--         </listOfProducts> -->
-<!--       </reaction> -->
     </listOfReactions>
   </model>
 </sbml>
