@@ -78,7 +78,7 @@
           </notes>
       </species>
     </listOfSpecies>
-  
+    
     <listOfParameters>
       <parameter constant="true" id="kcatt"  value="1800"  />
       <parameter constant="true" id="kcat1"  value="2000"  />
