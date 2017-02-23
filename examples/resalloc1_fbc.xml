@@ -15,9 +15,9 @@
     <listOfSpecies>
       <species id="N1"  compartment="external" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="N2"  compartment="external" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="N"   compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="ATP" compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="AA"  compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="N"   compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
+      <species id="ATP" compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
+      <species id="AA"  compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
       <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
