@@ -3,7 +3,7 @@
   <model id="resalloc1" name="resalloc1" fbcstrict="true">
     <notes>
       <body xmlns="http://www.w3.org/1999/xhtml">
-	  <p>This model uses the deFBA standard 1.0</p>
+	  <p>This file uses the deFBA SBML standard.</p>
       </body>
     </notes>     
     <listOfCompartments>
@@ -18,69 +18,13 @@
       <species id="N"   compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="ATP" compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="AA"  compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-          <notes>
-              <body xmlns="http://www.w3.org/1999/xhtml">
-                  <p>1*GTRANS1</p>
-                  <p>MOLECULAR WEIGHT: 0.1</p>
-                  <p>PERCENTAGE OF BIOMASS: 0</p>
-              </body>
-          </notes>
-      </species>
-      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-          <notes>
-              <body xmlns="http://www.w3.org/1999/xhtml">
-                  <p>1*GTRANS2</p>
-                  <p>MOLECULAR WEIGHT: 0.06</p>
-                  <p>PERCENTAGE OF BIOMASS: 0</p>
-              </body>
-          </notes>
-      </species>
-      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-          <notes>
-              <body xmlns="http://www.w3.org/1999/xhtml">
-                  <p>1*GMETAB1</p>
-                  <p>MOLECULAR WEIGHT: 0.2</p>
-                  <p>PERCENTAGE OF BIOMASS: 0</p>
-              </body>
-          </notes>
-      </species>
-      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-          <notes>
-              <body xmlns="http://www.w3.org/1999/xhtml">
-                  <p>1*GMETAB2</p>
-                  <p>MOLECULAR WEIGHT: 0.16</p>
-                  <p>PERCENTAGE OF BIOMASS: 0</p>
-              </body>
-          </notes>
-      </species>
-      <species id="R" name="Ribosome" compartment="bio" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-              <p>1*GRIBOS</p>
-              <p>MOLECULAR WEIGHT: 1</p>
-              <p>PERCENTAGE OF BIOMASS: 0</p>
-          </body>
-        </notes>
-      </species>
-      <species id="S" name="Structrual biomass component" compartment="bio" initialConcentration="0.001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-          <notes>
-              <body xmlns="http://www.w3.org/1999/xhtml">
-                  <p></p>
-                  <p>MOLECULAR WEIGHT: 0.1</p>
-                  <p>PERCENTAGE OF BIOMASS: 0.5</p>
-              </body>
-          </notes>
-      </species>
-      <species id="Complex_1" name="Transporter complex" compartment="bio" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-          <notes>
-              <body xmlns="http://www.w3.org/1999/xhtml">
-                  <p>1*GTRANS1 AND 1*GTRANS2</p>
-                  <p>MOLECULAR WEIGHT: 0.16</p>
-                  <p>PERCENTAGE OF BIOMASS: 0</p>
-              </body>
-          </notes>
-      </species>
+      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="R" name="Ribosome" compartment="bio" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="S" name="Structrual biomass component" compartment="bio" initialConcentration="0.001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Complex_1" name="Transporter complex" compartment="bio" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     
     <listOfParameters>
@@ -105,12 +49,7 @@
       <fbc:geneProduct fbc:id="R"         label="1*GRIBOS"      associatedSpecies="R"/>
     </fbc:listOfGeneProducts>
     <listOfReactions>
-      <reaction id="Trans1" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: 1*GTRANS1</p>
-          </body>
-        </notes>
+      <reaction id="Trans1" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">s
 	<fbc:geneProductAssociation fbc:id="Etrans1">
 	  <fbc:geneProductRef fbc:geneProduct="Etrans1" />
 	</fbc:geneProductAssociation>
@@ -289,7 +228,7 @@
                 </apply>
                 <apply>
                   <times/>
-                  <cn type="integer"> 1 </cn>
+                  <cn> 1.0 </cn>
                   <ci> R </ci>
                 </apply>
                 <apply>
@@ -303,7 +242,7 @@
                   <ci> Complex_1 </ci>
                 </apply>
               </apply>
-              <cn> 0.5 </cn>
+              <cn> 0.15 </cn>
             </apply>
           </apply>
         </math>
