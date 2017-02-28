@@ -15,18 +15,18 @@
     </listOfCompartments>
     
     <listOfSpecies>
-      <species id="N1"  compartment="external" initialAmount="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="N2"  compartment="external" initialAmount="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="N"   compartment="metabolites" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="ATP" compartment="metabolites" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="AA"  compartment="metabolites" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="R" name="Ribosome" compartment="bio" initialAmount="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="S" name="Structrual biomass component" compartment="bio" initialAmount="0.001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Complex_1" name="Transporter complex" compartment="bio" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="N1"  compartment="external" initialAmount="10"  constant="false"/>
+      <species id="N2"  compartment="external" initialAmount="10"  constant="false"/>
+      <species id="N"   compartment="metabolites" initialAmount="0"  constant="true"/>
+      <species id="ATP" compartment="metabolites" initialAmount="0"  constant="true"/>
+      <species id="AA"  compartment="metabolites" initialAmount="0"  constant="true"/>
+      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialAmount="1e-05"  constant="false"/>
+      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialAmount="1e-05"  constant="false"/>
+      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialAmount="1e-05"  constant="false"/>
+      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialAmount="1e-05"  constant="false"/>
+      <species id="R" name="Ribosome" compartment="bio" initialAmount="1e-06"  constant="false"/>
+      <species id="S" name="Structrual biomass component" compartment="bio" initialAmount="0.001"  constant="false"/>
+      <species id="Complex_1" name="Transporter complex" compartment="bio"  constant="false"/>
     </listOfSpecies>
     
     <listOfParameters>
