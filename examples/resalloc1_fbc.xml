@@ -5,32 +5,34 @@
       <body xmlns="http://www.w3.org/1999/xhtml">
 	  <p>This model uses the deFBA standard 1.0</p>
       </body>
-    </notes>     
+    </notes>
+    
     <listOfCompartments>
       <compartment sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
       <compartment id="external"    	 />
       <compartment id="metabolites" 	 />
       <compartment id="bio" />
     </listOfCompartments>
+    
     <listOfSpecies>
-      <species id="N1"  compartment="external" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="N2"  compartment="external" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="N"   compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="ATP" compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="AA"  compartment="metabolites" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
-      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="R" name="Ribosome" compartment="bio" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="S" name="Structrual biomass component" compartment="bio" initialConcentration="0.001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="N1"  compartment="external" initialAmount="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="N2"  compartment="external" initialAmount="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="N"   compartment="metabolites" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
+      <species id="ATP" compartment="metabolites" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
+      <species id="AA"  compartment="metabolites" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="true"/>
+      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialAmount="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="R" name="Ribosome" compartment="bio" initialAmount="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="S" name="Structrual biomass component" compartment="bio" initialAmount="0.001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="Complex_1" name="Transporter complex" compartment="bio" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     
     <listOfParameters>
-      <parameter constant="true" id="kcatt"  value="1800"  />
-      <parameter constant="true" id="kcat1"  value="2000"  />
-      <parameter constant="true" id="kcat2"  value="2500"  />
+      <parameter constant="true" id="kcatt"  value="180"  />
+      <parameter constant="true" id="kcat1"  value="200"  />
+      <parameter constant="true" id="kcat2"  value="250"  />
       <parameter constant="true" id="zero"   value="0"     />
       <parameter constant="true" id="kcatR1" value="10"    />
       <parameter constant="true" id="kcatR2" value="16.67" />
@@ -40,6 +42,7 @@
       <parameter constant="true" id="kcatR6" value="10"    />
       <parameter constant="true" id="kcatC1" value="6.25"  />
     </listOfParameters>
+    
     <fbc:listOfGeneProducts>
       <fbc:geneProduct fbc:id="Etrans1"   label="1*GTRANS1"     associatedSpecies="Etrans1"/>
       <fbc:geneProduct fbc:id="Etrans2"   label="1*GTRANS2"     associatedSpecies="Etrans2"/>
