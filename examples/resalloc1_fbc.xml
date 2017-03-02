@@ -30,17 +30,18 @@
     </listOfSpecies>
     
     <listOfParameters>
-      <parameter constant="true" id="kcatt"  value="180"  />
-      <parameter constant="true" id="kcat1"  value="200"  />
-      <parameter constant="true" id="kcat2"  value="250"  />
-      <parameter constant="true" id="zero"   value="0"     />
-      <parameter constant="true" id="kcatR1" value="10"    />
-      <parameter constant="true" id="kcatR2" value="16.67" />
-      <parameter constant="true" id="kcatR3" value="5"     />
-      <parameter constant="true" id="kcatR4" value="6.25"  />
-      <parameter constant="true" id="kcatR5" value="1"     />
-      <parameter constant="true" id="kcatR6" value="10"    />
-      <parameter constant="true" id="kcatC1" value="6.25"  />
+      <parameter constant="true" id="kcatt"  value="1800"   />
+      <parameter constant="true" id="kcatC"  value="2400"   />
+      <parameter constant="true" id="kcat1"  value="2000"   />
+      <parameter constant="true" id="kcat2"  value="2500"   />
+      <parameter constant="true" id="zero"   value="0.0"    />
+      <parameter constant="true" id="kcatR1" value="10"     />
+      <parameter constant="true" id="kcatR2" value="16.67"  />
+      <parameter constant="true" id="kcatR3" value="5"      />
+      <parameter constant="true" id="kcatR4" value="6.25"   />
+      <parameter constant="true" id="kcatR5" value="1"      />
+      <parameter constant="true" id="kcatR6" value="10"     />
+      <parameter constant="true" id="kcatC1" value="6.25"   />
     </listOfParameters>
     
     <fbc:listOfGeneProducts>
@@ -63,7 +64,7 @@
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction id="Trans2" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
+      <reaction id="Trans2" reversible="true" fast="false" fbc:lowerFluxBound="kcatC" fbc:upperFluxBound="kcatC">
         <fbc:geneProductAssociation fbc:id="Complex_1">
           <fbc:geneProductRef fbc:geneProduct="Complex_1"/>
         </fbc:geneProductAssociation>
@@ -73,7 +74,7 @@
         <listOfProducts>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfProducts>
-      </reaction>
+      </reaction>-->
       <reaction id="Metab1_1" reversible="false" fast="true" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Emetab1">
             <fbc:geneProductRef fbc:geneProduct="Emetab1" />
@@ -110,7 +111,7 @@
           <speciesReference species="ATP" stoichiometry="2" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction id="Biotrans1" reversible="false" fast="false" fbc:lowerFluxBound="kcatR1" fbc:upperFluxBound="zero">
+      <reaction id="PEtrans1" reversible="false" fast="false" fbc:lowerFluxBound="kcatR1" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
             <fbc:geneProductRef fbc:geneProduct="R" />
         </fbc:geneProductAssociation>
@@ -122,7 +123,7 @@
           <speciesReference species="Etrans1" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction id="Biotrans2" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR2" fbc:upperFluxBound="zero">
+      <reaction id="PEtrans2" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR2" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
             <fbc:geneProductRef fbc:geneProduct="R" />
         </fbc:geneProductAssociation>
@@ -134,7 +135,7 @@
           <speciesReference species="Etrans2" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction id="Biotrans1_AND_Biotrans2" reversible="false" fast="false" fbc:lowerFluxBound="kcatC1" fbc:upperFluxBound="zero">
+     <reaction id="PComplex_1" reversible="false" fast="false" fbc:lowerFluxBound="kcatC1" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
             <fbc:geneProductRef fbc:geneProduct="R" />
         </fbc:geneProductAssociation>
@@ -187,8 +188,8 @@
             <fbc:geneProductRef fbc:geneProduct="R" />
         </fbc:geneProductAssociation>
         <listOfReactants>
-          <speciesReference species="AA" stoichiometry="100" constant="true"/>
-          <speciesReference species="ATP" stoichiometry="250" constant="true"/>
+          <speciesReference species="AA" stoichiometry="4000" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="200" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="S" stoichiometry="1" constant="true"/>
@@ -231,7 +232,7 @@
                 </apply>
                 <apply>
                   <times/>
-                  <cn> 1.0 </cn>
+                  <cn> 1 </cn>
                   <ci> R </ci>
                 </apply>
                 <apply>

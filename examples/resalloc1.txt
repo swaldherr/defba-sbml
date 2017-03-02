@@ -16,7 +16,8 @@ AA = 0
 
 // enzymes
 Etrans1 = 1e-5  
-Etrans2 = 1e-5  
+Etrans2 = 1e-5
+Complex_1 = 1e-5
 Emetab1 = 1e-5 
 Emetab2 = 1e-5 
 // ribosome
@@ -26,7 +27,7 @@ S = 0.001
 
 // exchange reactions
 Trans1: N1 -> N; kcatt; // catalyzed by Etrans1
-Trans2: N2 -> N; kcatt;  // catalyzed by Etrans12
+Trans2: N2 -> N; kcatt;  // catalyzed by Complex_1
 kcatt = 1800;
 
 // metabolic reactions
@@ -37,8 +38,9 @@ kcat1 = 2000;
 kcat2 = 2500;
 
 // biomass reactions, all catalyzed competitively by R
-PBiotrans1: 100 AA + 450 ATP -> Etrans1; 10;
-PBiotrans2: 60 AA + 270 ATP -> Etrans2; 16.67;
+PEtrans1: 100 AA + 450 ATP -> Etrans1; 10;
+PEtrans2: 60 AA + 270 ATP -> Etrans2; 16.67;
+PComplex_1: 160 AA + 720 ATP -> Complex_1; 6.25;
 PMetab1: 200 AA + 900 ATP -> Emetab1; 5;
 PMetab2: 160 AA + 720 ATP -> Emetab2; 6.25;
 PR: 1000 AA + 45000 ATP -> R; 1;
