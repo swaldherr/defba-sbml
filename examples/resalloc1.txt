@@ -18,8 +18,7 @@ AA = 0
 Etrans1 = 1e-5  
 Etrans2 = 1e-5
 Complex_1 = 1e-5
-Emetab1 = 1e-5 
-Emetab2 = 1e-5 
+Emetab1 = 1e-5
 // ribosome
 R = 1e-6
 // structure
@@ -39,7 +38,6 @@ kcat2 = 2500;
 
 // biomass reactions, all catalyzed competitively by R
 PEtrans1: 100 AA + 450 ATP -> Etrans1; 10;
-PEtrans2: 60 AA + 270 ATP -> Etrans2; 16.67;
 PComplex_1: 160 AA + 720 ATP -> Complex_1; 6.25;
 PMetab1: 200 AA + 900 ATP -> Emetab1; 5;
 PMetab2: 160 AA + 720 ATP -> Emetab2; 6.25;
