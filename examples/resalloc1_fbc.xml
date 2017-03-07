@@ -17,6 +17,7 @@
     <listOfSpecies>
       <species id="N1"  compartment="external" initialAmount="10"  constant="false"/>
       <species id="N2"  compartment="external" initialAmount="10"  constant="false"/>
+      <species id="O2"  compartment="external" constant="true" boundaryCondition="true"/>
       <species id="N"   compartment="metabolites" initialAmount="0"  constant="true"/>
       <species id="ATP" compartment="metabolites" initialAmount="0"  constant="true"/>
       <species id="AA"  compartment="metabolites" initialAmount="0"  constant="true"/>
@@ -59,6 +60,7 @@
 	</fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="N1" stoichiometry="1" constant="true"/>
+	  <speciesReference species="O2" stoichiometry="2" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
