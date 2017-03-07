@@ -12,6 +12,7 @@
       <compartment id="external"    	 />
       <compartment id="metabolites" 	 />
       <compartment id="bio" />
+      <compartment id="storage" />
     </listOfCompartments>
     
     <listOfSpecies>
@@ -28,6 +29,9 @@
       <species id="R" name="Ribosome" compartment="bio" initialAmount="0.033641975308641964"  constant="false"/>
       <species id="S" name="Structrual biomass component" compartment="bio" initialAmount="0.7499999999999999"  constant="false"/>
       <species id="Complex_1" name="Transporter complex" compartment="bio" initialAmount="0.004166667083123639" constant="false"/>
+      <species id="Stor" name="Storage molecules" compartment="storage" initialAmount="0.0" constant="false"/>
+      <species id="Estor" name="Metabolic enzyme for handling storage" compartment="bio" initialAmount="0.0" constant="false" />
+<!--       <species id="Estor_b" name="Metabolic enzyme for depletion storage" compartment="bio" initialAmount="0.0" constant="false" /> -->
     </listOfSpecies>
     
     <listOfParameters>
@@ -43,6 +47,8 @@
       <parameter constant="true" id="kcatR5" value="1"      />
       <parameter constant="true" id="kcatR6" value="10"     />
       <parameter constant="true" id="kcatC1" value="6.25"   />
+      <parameter constant="true" id="kcatSf" value="25"     />
+      <parameter constant="true" id="kcatSb" value="30"     />
     </listOfParameters>
     
     <fbc:listOfGeneProducts>
@@ -52,9 +58,10 @@
       <fbc:geneProduct fbc:id="Emetab1"   label="1*GMETAB1"     associatedSpecies="Emetab1"/>
       <fbc:geneProduct fbc:id="Emetab2"   label="1*GMETAB2"     associatedSpecies="Emetab2"/>
       <fbc:geneProduct fbc:id="R"         label="1*GRIBOS"      associatedSpecies="R"/>
+      <fbc:geneProduct fbc:id="Estor"     label="1*GSTORF"	associatedSpecies="Estor"/>
     </fbc:listOfGeneProducts>
     <listOfReactions>
-      <reaction id="Trans1" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">s
+      <reaction id="Trans1" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
 	<fbc:geneProductAssociation fbc:id="Etrans1">
 	  <fbc:geneProductRef fbc:geneProduct="Etrans1" />
 	</fbc:geneProductAssociation>
@@ -111,6 +118,18 @@
         <listOfProducts>
           <speciesReference species="AA" stoichiometry="1" constant="true"/>
           <speciesReference species="ATP" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="Storing" reversible="true" fast="false" fbc:lowerFluxBound="kcatSf" fbc:upperFluxBound="kcatSb">
+	<fbc:geneProductAssociation fbc:id="Estor">
+	  <fbc:geneProductRef fbc:geneProduct="Estor" />
+	</fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference species="AA" stoichiometry="2" constant="true"/>
+	  <speciesReference species="ATP" stoichiometry="3" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Stor" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction id="PEtrans1" reversible="false" fast="false" fbc:lowerFluxBound="kcatR1" fbc:upperFluxBound="zero">
@@ -173,6 +192,18 @@
           <speciesReference species="Emetab2" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
+      <reaction id="PEstor" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR3" fbc:upperFluxBound="zero">
+        <fbc:geneProductAssociation fbc:id="Ribosome">
+            <fbc:geneProductRef fbc:geneProduct="R" />
+        </fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference species="AA" stoichiometry="150" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="500" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Estor" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
       <reaction id="PR" name="Ribosome expression" reversible="false" fast="false" fbc:lowerFluxBound="kcatR5" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
             <fbc:geneProductRef fbc:geneProduct="R" />
@@ -190,7 +221,7 @@
             <fbc:geneProductRef fbc:geneProduct="R" />
         </fbc:geneProductAssociation>
         <listOfReactants>
-          <speciesReference species="AA" stoichiometry="4000" constant="true"/>
+          <speciesReference species="AA" stoichiometry="1000" constant="true"/>
           <speciesReference species="ATP" stoichiometry="200" constant="true"/>
         </listOfReactants>
         <listOfProducts>
@@ -205,7 +236,7 @@
             <geq/>
             <apply>
               <times/>
-              <cn> 0.1 </cn>
+              <cn> 1 </cn>
               <ci> S </ci>
             </apply>
             <apply>
@@ -239,8 +270,13 @@
                 </apply>
                 <apply>
                   <times/>
-                  <cn> 0.1 </cn>
+                  <cn> 1 </cn>
                   <ci> S </ci>
+                </apply>
+		<apply>
+                  <times/>
+                  <cn> 0.15 </cn>
+                  <ci> Estor </ci>
                 </apply>
                 <apply>
                   <times/>
