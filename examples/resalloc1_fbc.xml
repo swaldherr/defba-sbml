@@ -125,8 +125,8 @@
 	  <fbc:geneProductRef fbc:geneProduct="Estor" />
 	</fbc:geneProductAssociation>
         <listOfReactants>
-          <speciesReference species="AA" stoichiometry="2" constant="true"/>
-	  <speciesReference species="ATP" stoichiometry="3" constant="true"/>
+          <speciesReference species="AA" stoichiometry="200" constant="true"/>
+	  <speciesReference species="ATP" stoichiometry="300" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="Stor" stoichiometry="1" constant="true"/>
@@ -221,7 +221,7 @@
             <fbc:geneProductRef fbc:geneProduct="R" />
         </fbc:geneProductAssociation>
         <listOfReactants>
-          <speciesReference species="AA" stoichiometry="1000" constant="true"/>
+          <speciesReference species="AA" stoichiometry="1500" constant="true"/>
           <speciesReference species="ATP" stoichiometry="200" constant="true"/>
         </listOfReactants>
         <listOfProducts>
@@ -236,7 +236,7 @@
             <geq/>
             <apply>
               <times/>
-              <cn> 1 </cn>
+              <cn> 1.5 </cn>
               <ci> S </ci>
             </apply>
             <apply>
@@ -270,8 +270,13 @@
                 </apply>
                 <apply>
                   <times/>
-                  <cn> 1 </cn>
+                  <cn> 1.5 </cn>
                   <ci> S </ci>
+                </apply>
+		<apply>
+                  <times/>
+                  <cn> 0.2 </cn>
+                  <ci> Stor </ci>
                 </apply>
 		<apply>
                   <times/>
