@@ -109,8 +109,8 @@
         </listOfProducts>
       </reaction>
       <reaction id="Metab2" reversible="false" fast="true" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
-        <fbc:geneProductAssociation fbc:id="Emetab1">
-            <fbc:geneProductRef fbc:geneProduct="Emetab1" />
+        <fbc:geneProductAssociation fbc:id="Emetab2">
+            <fbc:geneProductRef fbc:geneProduct="Emetab2" />
         </fbc:geneProductAssociation>
         <listOfReactants>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
