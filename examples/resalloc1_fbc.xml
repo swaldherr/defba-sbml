@@ -8,7 +8,6 @@
     </notes>
     
     <listOfCompartments>
-      <compartment sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
       <compartment id="external"    	 />
       <compartment id="metabolites" 	 />
       <compartment id="bio" />
@@ -60,6 +59,14 @@
       <fbc:geneProduct fbc:id="Estor"     label="1*GSTORF"	associatedSpecies="Estor"/>
     </fbc:listOfGeneProducts>
     <listOfReactions>
+      <reaction id="Maintenance" reversible="false" fast="true">
+	<listOfReactants>
+	  <speciesReference species="AA" stoichiometry="50" constant="true"/>
+	  <speciesReference species="ATP" stoichiometry="60" constant="true"/>
+	</listOfReactants>
+	<listOfProducts>
+	</listOfProducts>
+      </reaction>
       <reaction id="PMetab1" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR3" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
             <fbc:geneProductRef fbc:geneProduct="R" />
@@ -229,6 +236,66 @@
       </reaction>
     </listOfReactions>
     <listOfConstraints>
+      <constraint>
+	<math xmlns="http://www.w3.org/1998/Math/MathML">
+	  <apply>
+	    <leq/>
+	    <apply>
+	      <times/>
+	      <cn> -5 </cn>
+	      <ci> Maintenance </ci>
+	    </apply>
+	    <apply>
+	      <plus/>
+                <apply>
+                  <times/>
+                  <cn> -0.1 </cn>
+                  <ci> Etrans1 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn> -0.06 </cn>
+                  <ci> Etrans2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn> -0.2 </cn>
+                  <ci> Emetab1 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn> -0.16 </cn>
+                  <ci> Emetab2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn> -1 </cn>
+                  <ci> R </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn> -1.5 </cn>
+                  <ci> S </ci>
+                </apply>
+		<apply>
+                  <times/>
+                  <cn> -0.2 </cn>
+                  <ci> Stor </ci>
+                </apply>
+		<apply>
+                  <times/>
+                  <cn> -0.15 </cn>
+                  <ci> Estor </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn> -0.16 </cn>
+                  <ci> Complex_1 </ci>
+                </apply>
+	    </apply>
+	  </apply>
+	</math>
+      </constraint>
       <constraint>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
