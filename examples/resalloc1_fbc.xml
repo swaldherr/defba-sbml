@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1" xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2" fbc:required="true">
-  <model id="resalloc1" name="resalloc1" fbcstrict="true">
+  <model id="resalloc1" name="resalloc1" fbcstrict="false">
     <notes>
       <body xmlns="http://www.w3.org/1999/xhtml">
 	  <p>This model uses the deFBA standard 1.0</p>
@@ -15,21 +15,57 @@
     </listOfCompartments>
     
     <listOfSpecies>
-      <species id="AA"  compartment="metabolites" initialAmount="0"  constant="true"/>
-      <species id="N1"  compartment="external" initialAmount="10"  constant="false"/>
-      <species id="Stor" name="Storage molecules" compartment="storage" initialAmount="0.0" constant="false"/>
-      <species id="O2"  compartment="external" constant="true" boundaryCondition="true"/>
-      <species id="ATP" compartment="metabolites" initialAmount="0"  constant="true"/>
-      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialAmount="0.005555555555555556"  constant="false"/>
-      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialAmount="0.0"  constant="false"/>
       <species id="N2"  compartment="external" initialAmount="10"  constant="false"/>
-      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialAmount="1.9442790116926745"  constant="false"/>
-      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialAmount="0.008000000399798693"  constant="false"/>
-      <species id="R" name="Ribosome" compartment="bio" initialAmount="0.033641975308641964"  constant="false"/>
+      <species id="N1"  compartment="external" initialAmount="10"  constant="false"/>
+      <species id="O2"  compartment="external" constant="true" boundaryCondition="true"/>
       <species id="N"   compartment="metabolites" initialAmount="0"  constant="true"/>
-      <species id="S" name="Structrual biomass component" compartment="bio" initialAmount="0.7499999999999999"  constant="false"/>
-      <species id="Complex_1" name="Transporter complex" compartment="bio" initialAmount="0.004166667083123639" constant="false"/>
-      <species id="Estor" name="Metabolic enzyme for handling storage" compartment="bio" initialAmount="0.0" constant="false" />
+      <species id="AA"  compartment="metabolites" initialAmount="0"  constant="true"/>
+      <species id="ATP" compartment="metabolites" initialAmount="0"  constant="true"/>
+      <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialAmount="0.005555555555555556"  constant="false">
+        <annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.1" biomassPercentage="0"/>
+	</annotation>
+      </species>
+      <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialAmount="0.0"  constant="false">
+        <annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.06" biomassPercentage="0"/>
+	</annotation>
+      </species>
+      <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialAmount="1.9442790116926745"  constant="false">
+        <annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.2" biomassPercentage="0"/>
+	</annotation>
+      </species>
+      <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialAmount="0.008000000399798693"  constant="false">
+        <annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.16" biomassPercentage="0"/>
+	</annotation>
+      </species>
+      <species id="R" name="Ribosome" compartment="bio" initialAmount="0.033641975308641964"  constant="false">
+        <annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="1.0" biomassPercentage="0"/>
+	</annotation>
+      </species>
+      <species id="S" name="Structrual biomass component" compartment="bio" initialAmount="0.7499999999999999"  constant="false">
+        <annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="1.5" biomassPercentage="0.15"/>
+	</annotation>
+      </species>
+      <species id="Complex_1" name="Transporter complex" compartment="bio" initialAmount="0.004166667083123639" constant="false">
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.16" biomassPercentage="0"/>
+	</annotation>
+      </species>
+      <species id="Stor" name="Storage molecules" compartment="storage" initialAmount="0.0" constant="false">
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.2" biomassPercentage="0"/>
+	</annotation>
+      </species>
+      <species id="Estor" name="Metabolic enzyme for handling storage" compartment="bio" initialAmount="0.0" constant="false" >
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.15" biomassPercentage="0"/>
+	</annotation>
+      </species>
     </listOfSpecies>
     
     <listOfParameters>
@@ -66,6 +102,9 @@
 	</listOfReactants>
 	<listOfProducts>
 	</listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="0.2"/>
+	</annotation>
       </reaction>
       <reaction id="PMetab1" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR3" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
