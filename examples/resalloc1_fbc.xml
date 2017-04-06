@@ -23,47 +23,47 @@
       <species id="ATP" compartment="metabolites" initialAmount="0"  constant="true"/>
       <species id="Etrans1" name="Transporter enzyme" compartment="bio" initialAmount="0.005555555555555556"  constant="false">
         <annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.1" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh2" biomassPercentage="zero"/>
 	</annotation>
       </species>
       <species id="Etrans2" name="Cofactor of transporter enzyme" compartment="bio" initialAmount="0.0"  constant="false">
         <annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.06" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh6" biomassPercentage="zero"/>
 	</annotation>
       </species>
       <species id="Emetab1" name="Generic metabolic enzyme" compartment="bio" initialAmount="1.9442790116926745"  constant="false">
         <annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.2" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh3" biomassPercentage="zero"/>
 	</annotation>
       </species>
       <species id="Emetab2" name="Specialized metabolic enzyme" compartment="bio" initialAmount="0.008000000399798693"  constant="false">
         <annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.16" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh5" biomassPercentage="zero"/>
 	</annotation>
       </species>
       <species id="R" name="Ribosome" compartment="bio" initialAmount="0.033641975308641964"  constant="false">
         <annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="1.0" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh4" biomassPercentage="zero"/>
 	</annotation>
       </species>
       <species id="S" name="Structrual biomass component" compartment="bio" initialAmount="0.7499999999999999"  constant="false">
         <annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="1.5" biomassPercentage="0.15"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh7" biomassPercentage="bioPer"/>
 	</annotation>
       </species>
       <species id="Complex_1" name="Transporter complex" compartment="bio" initialAmount="0.004166667083123639" constant="false">
 	<annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.16" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh5" biomassPercentage="zero"/>
 	</annotation>
       </species>
       <species id="Stor" name="Storage molecules" compartment="storage" initialAmount="0.0" constant="false">
 	<annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.2" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh3" biomassPercentage="zero"/>
 	</annotation>
       </species>
       <species id="Estor" name="Metabolic enzyme for handling storage" compartment="bio" initialAmount="0.0" constant="false" >
 	<annotation>
-	  <deFBA xmlns="http://fancy.web.page" molecularWeight="0.15" biomassPercentage="0"/>
+	  <deFBA xmlns="http://fancy.web.page" molecularWeight="weigh1" biomassPercentage="zero"/>
 	</annotation>
       </species>
     </listOfSpecies>
@@ -83,6 +83,15 @@
       <parameter constant="true" id="kcatC1" value="6.25"   />
       <parameter constant="true" id="kcatSf" value="25"     />
       <parameter constant="true" id="kcatSb" value="30"     />
+      <parameter constant="true" id="mtScal" value="0.2"    />
+      <parameter constant="true" id="weigh1" value="0.15"   />
+      <parameter constant="true" id="weigh2" value="0.1"    />
+      <parameter constant="true" id="weigh3" value="0.2"    />
+      <parameter constant="true" id="weigh4" value="1.0"    />
+      <parameter constant="true" id="weigh5" value="0.16"   />
+      <parameter constant="true" id="weigh6" value="0.06"   />
+      <parameter constant="true" id="weigh7" value="1.5"    />
+      <parameter constant+"true" id="bioPer" value="0.15"   />
     </listOfParameters>
     
     <fbc:listOfGeneProducts>
@@ -103,7 +112,7 @@
 	<listOfProducts>
 	</listOfProducts>
 	<annotation>
-	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="0.2"/>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="mtScal" kcatForward = "zero" kcatBackward = "zero"/>
 	</annotation>
       </reaction>
       <reaction id="PMetab1" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR3" fbc:upperFluxBound="zero">
@@ -117,6 +126,9 @@
         <listOfProducts>
           <speciesReference species="Emetab1" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR3" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="Metab1_1" reversible="false" fast="true" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Emetab1">
@@ -129,6 +141,9 @@
           <speciesReference species="AA" stoichiometry="1" constant="true"/>
           <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR3" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="Trans2" reversible="true" fast="false" fbc:lowerFluxBound="kcatC" fbc:upperFluxBound="kcatC">
         <fbc:geneProductAssociation fbc:id="Complex_1">
@@ -140,7 +155,10 @@
         <listOfProducts>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfProducts>
-      </reaction>-->
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatC" kcatBackward = "kcatC"/>
+	</annotation>
+      </reaction>
       <reaction id="Metab1_2" reversible="false" fast="true" fbc:lowerFluxBound="kcat2" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Emetab2">
             <fbc:geneProductRef fbc:geneProduct="Emetab2" />
@@ -152,6 +170,9 @@
           <speciesReference species="AA" stoichiometry="1" constant="true"/>
           <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcat2" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="Trans1" reversible="true" fast="false" fbc:lowerFluxBound="kcatt" fbc:upperFluxBound="kcatt">
 	<fbc:geneProductAssociation fbc:id="Etrans1">
@@ -164,6 +185,9 @@
         <listOfProducts>
           <speciesReference species="N" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatt" kcatBackward = "kcatt"/>
+	</annotation>
       </reaction>
       <reaction id="Storing" reversible="true" fast="false" fbc:lowerFluxBound="kcatSf" fbc:upperFluxBound="kcatSb">
 	<fbc:geneProductAssociation fbc:id="Estor">
@@ -176,6 +200,9 @@
         <listOfProducts>
           <speciesReference species="Stor" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatSf" kcatBackward = "kcatSb"/>
+	</annotation>
       </reaction>
       <reaction id="PEtrans1" reversible="false" fast="false" fbc:lowerFluxBound="kcatR1" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
@@ -188,6 +215,9 @@
         <listOfProducts>
           <speciesReference species="Etrans1" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR1" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="PEtrans2" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR2" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
@@ -200,6 +230,9 @@
         <listOfProducts>
           <speciesReference species="Etrans2" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR2" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
      <reaction id="PComplex_1" reversible="false" fast="false" fbc:lowerFluxBound="kcatC1" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
@@ -212,6 +245,9 @@
         <listOfProducts>
           <speciesReference species="Complex_1" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatC1" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="PMetab2" reversible="false" fast="false" fbc:lowerFluxBound="kcatR4" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
@@ -224,6 +260,9 @@
         <listOfProducts>
           <speciesReference species="Emetab2" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR4" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="PEstor" reversible="false" fast="false"  fbc:lowerFluxBound="kcatR3" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
@@ -236,6 +275,9 @@
         <listOfProducts>
           <speciesReference species="Estor" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR3" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="PR" name="Ribosome expression" reversible="false" fast="false" fbc:lowerFluxBound="kcatR5" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
@@ -248,6 +290,9 @@
         <listOfProducts>
           <speciesReference species="R" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR5" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="Metab2" reversible="false" fast="true" fbc:lowerFluxBound="kcat1" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Emetab2">
@@ -260,6 +305,9 @@
           <speciesReference species="AA" stoichiometry="1" constant="true"/>
           <speciesReference species="ATP" stoichiometry="2" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcat1" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
       <reaction id="PS" name="Structural biomass production" reversible="false" fast="false" fbc:lowerFluxBound="kcatR6" fbc:upperFluxBound="zero">
         <fbc:geneProductAssociation fbc:id="Ribosome">
@@ -272,6 +320,9 @@
         <listOfProducts>
           <speciesReference species="S" stoichiometry="1" constant="true"/>
         </listOfProducts>
+	<annotation>
+	  <deFBA xmlns="http://fancy.web.page" maintenanceScaling="zero" kcatForward = "kcatR6" kcatBackward = "zero"/>
+	</annotation>
       </reaction>
     </listOfReactions>
     <listOfConstraints>
